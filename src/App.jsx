@@ -1,4 +1,4 @@
-  import { useState } from "react"; import { motion } from "framer-motion";
+    import { useState } from "react";
 
 export default function Home() { const [cart, setCart] = useState([]);
 
@@ -19,14 +19,10 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
 
   {/* HERO */}
   <section className="h-screen flex items-center justify-center text-center">
-    <div className="bg-black/70 backdrop-blur-md p-12 rounded-3xl shadow-2xl">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-6xl md:text-8xl font-bold tracking-widest text-yellow-500"
-      >
+    <div className="bg-black/70 p-12 rounded-3xl shadow-2xl">
+      <h1 className="text-6xl md:text-8xl font-bold tracking-widest text-yellow-500">
         HSCANDLES
-      </motion.h1>
+      </h1>
       <p className="mt-6 text-lg text-gray-300 max-w-xl">
         Luxury scented candles with a warm elegant atmosphere
       </p>
@@ -43,10 +39,9 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
     </h2>
     <div className="grid md:grid-cols-3 gap-10">
       {products.map((p, i) => (
-        <motion.div
+        <div
           key={i}
-          whileHover={{ scale: 1.08 }}
-          className="rounded-3xl overflow-hidden bg-zinc-900 shadow-2xl border border-yellow-500/20"
+          className="rounded-3xl overflow-hidden bg-zinc-900 shadow-2xl border border-yellow-500/20 hover:scale-105 transition"
         >
           <img src={p.img} className="h-72 w-full object-cover" />
           <div className="p-6 text-center">
@@ -59,7 +54,7 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
               Add to Cart
             </button>
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
   </section>
@@ -92,4 +87,4 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
   </footer>
 </div>
 
-); }       
+); }
