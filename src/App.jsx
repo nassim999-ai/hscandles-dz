@@ -26,7 +26,7 @@ export default function App() {
             <p style={{ color: "#d4af37" }}>{p.price}</p>
 
             <a
-              href={`https://wa.me/213XXXXXXXXX?text=Bonjour je veux commander ${p.name}`}
+              href={`https://wa.me/213771063641?text=Bonjour je veux commander ${p.name}`}
               target="_blank"
               style={{
                 display: "inline-block",
