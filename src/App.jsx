@@ -1,90 +1,112 @@
-    import { useState } from "react";
+     import { useState } from "react";
 
-export default function Home() { const [cart, setCart] = useState([]);
+export default function App() {
+  const [cart, setCart] = useState([]);
 
-const products = [ { name: "Vanilla Glow", price: 1200, img: "https://images.unsplash.com/photo-1603006905003-be475563bc59" }, { name: "Amber Night", price: 1500, img: "https://images.unsplash.com/photo-1602524814058-f3a7b7b0f9f5" }, { name: "Rose Luxury", price: 1800, img: "https://images.unsplash.com/photo-1616627981079-16c2c2c1b7a5" }, ];
+  const products = [
+    {
+      name: "Vanilla Glow",
+      price: 1200,
+      img: "https://images.unsplash.com/photo-1603006905003-be475563bc59",
+    },
+    {
+      name: "Amber Night",
+      price: 1500,
+      img: "https://images.unsplash.com/photo-1602524814058-f3a7b7b0f9f5",
+    },
+    {
+      name: "Rose Luxury",
+      price: 1800,
+      img: "https://images.unsplash.com/photo-1616627981079-16c2c2c1b7a5",
+    },
+  ];
 
-const addToCart = (product) => { setCart([...cart, product]); };
+  const addToCart = (p) => {
+    setCart([...cart, p]);
+  };
 
-const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const total = cart.reduce((a, b) => a + b.price, 0);
 
-return ( <div className="bg-black text-white min-h-screen font-serif relative">
+  return (
+    <div style={{ fontFamily: "sans-serif", color: "white", background: "black", minHeight: "100vh" }}>
 
-{/* BACKGROUND GIF */}
-  <div className="fixed inset-0 -z-10 opacity-30 bg-cover bg-center"
-    style={{
-      backgroundImage: "url('https://media.giphy.com/media/3o7TKsQ8UQx1m8w4W4/giphy.gif')"
-    }}
-  />
+      {/* BACKGROUND */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: -1,
+          opacity: 0.25,
+          backgroundImage:
+            "url('https://media.giphy.com/media/3o7TKsQ8UQx1m8w4W4/giphy.gif')",
+          backgroundSize: "cover",
+        }}
+      />
 
-  {/* HERO */}
-  <section className="h-screen flex items-center justify-center text-center">
-    <div className="bg-black/70 p-12 rounded-3xl shadow-2xl">
-      <h1 className="text-6xl md:text-8xl font-bold tracking-widest text-yellow-500">
-        HSCANDLES
-      </h1>
-      <p className="mt-6 text-lg text-gray-300 max-w-xl">
-        Luxury scented candles with a warm elegant atmosphere
-      </p>
-      <button className="mt-8 px-8 py-3 text-lg bg-yellow-500 text-black rounded-full hover:bg-yellow-600">
-        Shop Now
-      </button>
-    </div>
-  </section>
+      {/* HERO */}
+      <div style={{ textAlign: "center", padding: "100px 20px" }}>
+        <h1 style={{ fontSize: "60px", color: "#d4af37" }}>HSCANDLES DZ</h1>
+        <p style={{ color: "#ccc" }}>
+          Luxury handmade candles for a warm atmosphere
+        </p>
 
-  {/* PRODUCTS */}
-  <section className="px-6 pb-24">
-    <h2 className="text-4xl text-center mb-14 text-yellow-500 font-bold">
-      Best Sellers
-    </h2>
-    <div className="grid md:grid-cols-3 gap-10">
-      {products.map((p, i) => (
-        <div
-          key={i}
-          className="rounded-3xl overflow-hidden bg-zinc-900 shadow-2xl border border-yellow-500/20 hover:scale-105 transition"
+        <button
+          style={{
+            marginTop: 20,
+            padding: "10px 25px",
+            background: "#d4af37",
+            border: "none",
+            borderRadius: 20,
+            cursor: "pointer",
+          }}
         >
-          <img src={p.img} className="h-72 w-full object-cover" />
-          <div className="p-6 text-center">
-            <h3 className="text-2xl font-semibold">{p.name}</h3>
-            <p className="text-gray-400 mt-2">{p.price} DA</p>
+          Shop Now
+        </button>
+      </div>
+
+      {/* PRODUCTS */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px,1fr))", gap: 20, padding: 20 }}>
+        {products.map((p, i) => (
+          <div key={i} style={{ background: "#111", padding: 10, borderRadius: 15 }}>
+            <img src={p.img} style={{ width: "100%", height: 200, objectFit: "cover", borderRadius: 10 }} />
+            <h3>{p.name}</h3>
+            <p style={{ color: "#aaa" }}>{p.price} DA</p>
             <button
               onClick={() => addToCart(p)}
-              className="mt-4 w-full bg-yellow-500 text-black rounded-full hover:bg-yellow-600 py-2"
+              style={{
+                width: "100%",
+                padding: 10,
+                background: "#d4af37",
+                border: "none",
+                borderRadius: 10,
+                cursor: "pointer",
+              }}
             >
               Add to Cart
             </button>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  {/* CART */}
-  <div className="fixed top-5 right-5 bg-zinc-900 p-5 rounded-2xl shadow-xl w-72">
-    <h3 className="text-xl mb-4 text-yellow-500">Cart 🛒</h3>
-    {cart.length === 0 ? (
-      <p className="text-gray-400">Cart is empty</p>
-    ) : (
-      <div>
-        {cart.map((item, i) => (
-          <div key={i} className="flex justify-between text-sm mb-2">
-            <span>{item.name}</span>
-            <span>{item.price} DA</span>
-          </div>
         ))}
-        <hr className="my-3 border-zinc-700" />
-        <p className="flex justify-between font-bold">
-          <span>Total</span>
-          <span>{total} DA</span>
-        </p>
       </div>
-    )}
-  </div>
 
-  {/* FOOTER */}
-  <footer className="text-center py-12 border-t border-yellow-500/20 text-gray-500">
-    <p>© 2026 HSCANDLES DZ</p>
-  </footer>
-</div>
+      {/* CART */}
+      <div style={{ position: "fixed", right: 10, top: 10, background: "#111", padding: 15, borderRadius: 10, width: 220 }}>
+        <h3 style={{ color: "#d4af37" }}>Cart 🛒</h3>
 
-); }
+        {cart.length === 0 ? (
+          <p style={{ color: "#aaa" }}>Empty</p>
+        ) : (
+          <>
+            {cart.map((c, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 12 }}>
+                <span>{c.name}</span>
+                <span>{c.price}</span>
+              </div>
+            ))}
+            <hr />
+            <b>Total: {total} DA</b>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}         
