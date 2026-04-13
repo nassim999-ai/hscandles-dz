@@ -1,4 +1,4 @@
-   import { useState } from "react"; import { motion } from "framer-motion"; import { Button } from "@/components/ui/button";
+  import { useState } from "react"; import { motion } from "framer-motion";
 
 export default function Home() { const [cart, setCart] = useState([]);
 
@@ -30,9 +30,9 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
       <p className="mt-6 text-lg text-gray-300 max-w-xl">
         Luxury scented candles with a warm elegant atmosphere
       </p>
-      <Button className="mt-8 px-8 py-3 text-lg bg-yellow-500 text-black rounded-full hover:bg-yellow-600">
+      <button className="mt-8 px-8 py-3 text-lg bg-yellow-500 text-black rounded-full hover:bg-yellow-600">
         Shop Now
-      </Button>
+      </button>
     </div>
   </section>
 
@@ -52,12 +52,12 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
           <div className="p-6 text-center">
             <h3 className="text-2xl font-semibold">{p.name}</h3>
             <p className="text-gray-400 mt-2">{p.price} DA</p>
-            <Button
+            <button
               onClick={() => addToCart(p)}
-              className="mt-4 w-full bg-yellow-500 text-black rounded-full hover:bg-yellow-600"
+              className="mt-4 w-full bg-yellow-500 text-black rounded-full hover:bg-yellow-600 py-2"
             >
               Add to Cart
-            </Button>
+            </button>
           </div>
         </motion.div>
       ))}
@@ -92,4 +92,4 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
   </footer>
 </div>
 
-); }   
+); }       
