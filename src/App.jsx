@@ -11,7 +11,7 @@ export default function App() {
     <div style={{ background: "#000", color: "#fff", minHeight: "100vh", padding: "20px", fontFamily: "Arial" }}>
       
       <h1 style={{ color: "#d4af37", textAlign: "center" }}>
-        HSCANDLES DZ
+        HSCANDLES 
       </h1>
 
       <p style={{ textAlign: "center", marginBottom: "40px" }}>
