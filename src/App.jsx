@@ -1,4 +1,4 @@
-import { useState } from "react"; import { motion } from "framer-motion"; import { Button } from "@/components/ui/button";
+   import { useState } from "react"; import { motion } from "framer-motion"; import { Button } from "@/components/ui/button";
 
 export default function Home() { const [cart, setCart] = useState([]);
 
@@ -92,4 +92,4 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
   </footer>
 </div>
 
-); }
+); }   
