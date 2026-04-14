@@ -1,90 +1,41 @@
-  import { useState } from "react";
+import { useState } from "react";
 
-export default function Home() { const [cart, setCart] = useState([]);
+export default function App() {
+  const [cart, setCart] = useState([]);
 
-const products = [ { name: "Vanilla Glow", price: 1200, img: "https://images.unsplash.com/photo-1603006905003-be475563bc59" }, { name: "Amber Night", price: 1500, img: "https://images.unsplash.com/photo-1602524814058-f3a7b7b0f9f5" }, { name: "Rose Luxury", price: 1800, img: "https://images.unsplash.com/photo-1616627981079-16c2c2c1b7a5" }, ];
+  const products = [
+    { name: "Vanilla Glow", price: 1200 },
+    { name: "Amber Night", price: 1500 },
+    { name: "Rose Luxury", price: 1800 },
+  ];
 
-const addToCart = (product) => { setCart([...cart, product]); };
+  const addToCart = (p) => setCart([...cart, p]);
 
-const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const total = cart.reduce((a, b) => a + b.price, 0);
 
-return ( <div className="bg-black text-white min-h-screen font-serif relative">
+  return (
+    <div style={{ background: "black", color: "white", minHeight: "100vh", padding: 20 }}>
+      
+      <h1 style={{ color: "#d4af37" }}>HSCANDLES</h1>
 
-{/* BACKGROUND GIF */}
-  <div className="fixed inset-0 -z-10 opacity-30 bg-cover bg-center"
-    style={{
-      backgroundImage: "url('https://media.giphy.com/media/3o7TKsQ8UQx1m8w4W4/giphy.gif')"
-    }}
-  />
-
-  {/* HERO */}
-  <section className="h-screen flex items-center justify-center text-center">
-    <div className="bg-black/70 p-12 rounded-3xl shadow-2xl">
-      <h1 className="text-6xl md:text-8xl font-bold tracking-widest text-yellow-500">
-        HSCANDLES
-      </h1>
-      <p className="mt-6 text-lg text-gray-300 max-w-xl">
-        Luxury scented candles with a warm elegant atmosphere
-      </p>
-      <button className="mt-8 px-8 py-3 text-lg bg-yellow-500 text-black rounded-full hover:bg-yellow-600">
-        Shop Now
-      </button>
-    </div>
-  </section>
-
-  {/* PRODUCTS */}
-  <section className="px-6 pb-24">
-    <h2 className="text-4xl text-center mb-14 text-yellow-500 font-bold">
-      Best Sellers
-    </h2>
-    <div className="grid md:grid-cols-3 gap-10">
-      {products.map((p, i) => (
-        <div
-          key={i}
-          className="rounded-3xl overflow-hidden bg-zinc-900 shadow-2xl border border-yellow-500/20 hover:scale-105 transition"
-        >
-          <img src={p.img} className="h-72 w-full object-cover" />
-          <div className="p-6 text-center">
-            <h3 className="text-2xl font-semibold">{p.name}</h3>
-            <p className="text-gray-400 mt-2">{p.price} DA</p>
-            <button
-              onClick={() => addToCart(p)}
-              className="mt-4 w-full bg-yellow-500 text-black rounded-full hover:bg-yellow-600 py-2"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  {/* CART */}
-  <div className="fixed top-5 right-5 bg-zinc-900 p-5 rounded-2xl shadow-xl w-72">
-    <h3 className="text-xl mb-4 text-yellow-500">Cart 🛒</h3>
-    {cart.length === 0 ? (
-      <p className="text-gray-400">Cart is empty</p>
-    ) : (
       <div>
-        {cart.map((item, i) => (
-          <div key={i} className="flex justify-between text-sm mb-2">
-            <span>{item.name}</span>
-            <span>{item.price} DA</span>
+        {products.map((p, i) => (
+          <div key={i} style={{ margin: 10, padding: 10, background: "#111" }}>
+            <h3>{p.name}</h3>
+            <p>{p.price} DA</p>
+            <button onClick={() => addToCart(p)}>Add</button>
           </div>
         ))}
-        <hr className="my-3 border-zinc-700" />
-        <p className="flex justify-between font-bold">
-          <span>Total</span>
-          <span>{total} DA</span>
-        </p>
       </div>
-    )}
-  </div>
 
-  {/* FOOTER */}
-  <footer className="text-center py-12 border-t border-yellow-500/20 text-gray-500">
-    <p>© 2026 HSCANDLES</p>
-  </footer>
-</div>
+      <hr />
 
-); }              
+      <h3>Cart 🛒</h3>
+      {cart.map((c, i) => (
+        <p key={i}>{c.name} - {c.price}</p>
+      ))}
+
+      <h2>Total: {total} DA</h2>
+    </div>
+  );
+}
