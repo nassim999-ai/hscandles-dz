@@ -1,4 +1,4 @@
-    import { useState } from "react";
+  import { useState } from "react";
 
 export default function Home() { const [cart, setCart] = useState([]);
 
@@ -87,4 +87,4 @@ return ( <div className="bg-black text-white min-h-screen font-serif relative">
   </footer>
 </div>
 
-); }    
+); }              
